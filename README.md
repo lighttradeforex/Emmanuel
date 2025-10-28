@@ -9,22 +9,22 @@
  5.  **AI Tools - Gemini / Jules / Windsurf / CODEX (like JavaScript Backend):** AI tools are leveraged for backend development and automation.
  6.  The process then cycles back to step 1, with continued development and versioning.
  
-+## Tech Stack Flowchart
-+
-+```mermaid
-+flowchart LR
-+    GitHub["GitHub Desktop
+## Tech Stack Flowchart
+
+```mermaid
+flowchart LR
+    GitHub["GitHub Desktop
 GIT Versioning"] --> Firebase["Firebase Studio
 Frontend HTML & CSS"]
-+    Firebase --> Markup["Markup Language
+    Firebase --> Markup["Markup Language
 Markdown & Mermaid"]
-+    Markup --> Supabase["Supabase SQL Tables
+    Markup --> Supabase["Supabase SQL Tables
 Database Management"]
-+    Supabase --> AI["AI Tools
+    Supabase --> AI["AI Tools
 Gemini / Jules / Windsurf / CODEX"]
-+    AI --> GitHub
-+```
-+
+    AI --> GitHub
+```
+
  ## Legend
  
  *   **GitHub:** Version History like Google Docs
