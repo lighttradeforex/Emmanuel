@@ -26,3 +26,11 @@ Here is a description of the project workflow:
 | 3 | **Enter Software Details** | The user enters the expiry dates for software licenses: 365, NordVPN, McAfee Antivirus, Adobe, and ChatGPT. |
 | 4 | **Save Data** | The user submits the form. The data is sent to the backend and stored in a Supabase database. |
 | 5 | **View Tracked Data** | The application displays a table of all tracked companies and their software license information. |
+
+# Dummy Data
+
+| Company Name | Address | 365 Expiry | NordVPN Expiry | McAfee Antivirus Expiry | Adobe Expiry | ChatGPT Expiry |
+|---|---|---|---|---|---|---|
+| Acme Inc. | 123 Main St, Anytown, USA | 2024-12-31 | 2025-06-15 | 2024-10-20 | 2025-01-31 | 2024-11-30 |
+| Globex Corp. | 456 Oak Ave, Sometown, USA | 2025-03-22 | 2024-09-01 | 2025-02-28 | 2024-08-14 | 2025-05-19 |
+| Stark Industries | 789 Pine Ln, Yourtown, USA | 2024-07-11 | 2025-04-05 | 2024-12-01 | 2025-03-10 | 2024-09-25 |
