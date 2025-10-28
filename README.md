@@ -1,26 +1,67 @@
-flowchart LR
-    A[GitHub Desktop 🖥️ <br/> GIT Versioning <br/> <i>aka Google Docs History</i>] --> B[Firebase Studio 🔥 <br/> Frontend HTML & CSS Mastery <br/> <i>aka Paint + W3Schools</i>]
-    B --> C[Markup Language 🧾 <br/> README + FlowCharts (Mermaid) <br/> <i>aka PowerPoint</i>]
-    C --> D[Database Management 💾 <br/> Supabase SQL Tables <br/> <i>aka Excel</i>]
-    D --> E[AI Tools 🤖 <br/> Gemini / Jules / Windsurf / CODEX <br/> <i>JavaScript Backend</i>]
-    E --> A
+import { useState } from 'react';
+import DOMPurify from 'dompurify';
+import ReactMarkdown from 'react-markdown';
+import Asciidoctor from 'asciidoctor';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
-    subgraph Legend
-        L1[🖥️ GitHub = Version History like Google Docs]
-        L2[🔥 Firebase = Design & Frontend like Paint]
-        L3[🧾 Markup = Docs & Diagrams like PowerPoint]
-        L4[💾 Supabase = Database like Excel]
-        L5[🤖 AI Tools = Automate JS backend (replaces IT personnel)]
-    end
+export default function MarkupViewer() {
+  const [input, setInput] = useState('');
+  const [language, setLanguage] = useState('markdown');
+  const asciidoctor = Asciidoctor();
 
-    classDef dev fill:#0366d6,stroke:#fff,color:#fff;
-    classDef ui fill:#ff9f43,stroke:#fff,color:#fff;
-    classDef doc fill:#00b894,stroke:#fff,color:#fff;
-    classDef db fill:#0984e3,stroke:#fff,color:#fff;
-    classDef ai fill:#6c5ce7,stroke:#fff,color:#fff;
+  const renderContent = () => {
+    if (language === 'markdown') {
+      return <ReactMarkdown>{input}</ReactMarkdown>;
+    } else if (language === 'asciidoc') {
+      const html = asciidoctor.convert(input);
+      return <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(html) }} />;
+    } else if (language === 'html') {
+      return <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(input) }} />;
+    }
+  };
 
-    class A dev;
-    class B ui;
-    class C doc;
-    class D db;
-    class E ai;
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-6">
+      <Card>
+        <CardHeader>
+          <CardTitle>Markup Editor</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <select
+            className="border rounded p-2 mb-3 w-full"
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+          >
+            <option value="markdown">Markdown</option>
+            <option value="asciidoc">AsciiDoc</option>
+            <option value="html">HTML</option>
+          </select>
+          <textarea
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            className="w-full h-96 border rounded p-2 font-mono"
+            placeholder="Type or paste your markup here..."
+          />
+          <Button
+            className="mt-3"
+            onClick={() => navigator.clipboard.writeText(input)}
+          >
+            Copy Source
+          </Button>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Preview</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <div className="prose max-w-none dark:prose-invert">
+            {renderContent()}
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
