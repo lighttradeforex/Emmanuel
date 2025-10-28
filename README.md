@@ -1,23 +1,26 @@
-flowchart TD
+flowchart LR
+    A[GitHub Desktop 🖥️ <br/> GIT Versioning <br/> <i>aka Google Docs History</i>] --> B[Firebase Studio 🔥 <br/> Frontend HTML & CSS Mastery <br/> <i>aka Paint + W3Schools</i>]
+    B --> C[Markup Language 🧾 <br/> README + FlowCharts (Mermaid) <br/> <i>aka PowerPoint</i>]
+    C --> D[Database Management 💾 <br/> Supabase SQL Tables <br/> <i>aka Excel</i>]
+    D --> E[AI Tools 🤖 <br/> Gemini / Jules / Windsurf / CODEX <br/> <i>JavaScript Backend</i>]
+    E --> A
 
-    A[GitHub Desktop 🖥️] -->|Version Control| B[Firebase Studio 🎨]
-    B -->|Frontend HTML & CSS Mastery| C[Markup Language 🧾]
-    C -->|Documentation & Flowcharts| D[Database Management 💾]
-    D -->|Data Storage & SQL Queries| E[AI Tools 🤖]
-
-    subgraph "GitHub Workflow Overview"
-        A:::github
-        B:::frontend
-        C:::markup
-        D:::database
-        E:::backend
+    subgraph Legend
+        L1[🖥️ GitHub = Version History like Google Docs]
+        L2[🔥 Firebase = Design & Frontend like Paint]
+        L3[🧾 Markup = Docs & Diagrams like PowerPoint]
+        L4[💾 Supabase = Database like Excel]
+        L5[🤖 AI Tools = Automate JS backend (replaces IT personnel)]
     end
 
-    E -->|Automation & Scripting| A
+    classDef dev fill:#0366d6,stroke:#fff,color:#fff;
+    classDef ui fill:#ff9f43,stroke:#fff,color:#fff;
+    classDef doc fill:#00b894,stroke:#fff,color:#fff;
+    classDef db fill:#0984e3,stroke:#fff,color:#fff;
+    classDef ai fill:#6c5ce7,stroke:#fff,color:#fff;
 
-    %% Styling
-    classDef github fill:#0366d6,stroke:#fff,stroke-width:2px,color:#fff;
-    classDef frontend fill:#ff9f43,stroke:#fff,stroke-width:2px,color:#fff;
-    classDef markup fill:#00b894,stroke:#fff,stroke-width:2px,color:#fff;
-    classDef database fill:#0984e3,stroke:#fff,stroke-width:2px,color:#fff;
-    classDef backend fill:#6c5ce7,stroke:#fff,stroke-width:2px,color:#fff;
+    class A dev;
+    class B ui;
+    class C doc;
+    class D db;
+    class E ai;
